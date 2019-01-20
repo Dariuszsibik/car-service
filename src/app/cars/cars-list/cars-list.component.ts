@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewEncapsulation, ViewChild, ViewChildren } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewEncapsulation, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import {Car} from "../models/car";
 import {TotalCostComponent} from "../total-cost/total-cost.component";
 import {CarsService} from "../cars.service";
@@ -13,9 +13,10 @@ import { CarTableRowComponent } from '../car-table-row/car-table-row.component';
   styleUrls: ['./cars-list.component.less'],
   encapsulation: ViewEncapsulation.None
 })
+
 export class CarsListComponent implements OnInit {
   @ViewChild("totalCostRef") totalCostRef : TotalCostComponent;
-  //@ViewChildren(CarTableRowComponent)
+  @ViewChildren(CarTableRowComponent) carRows: QueryList<CarTableRowComponent>
   totalCost : number;
   grossCost : number;
   cars : Car[] = [];
@@ -29,6 +30,14 @@ export class CarsListComponent implements OnInit {
   ngOnInit() {
     this.loadCars();
     this.carForm = this.buildCarForm();
+  }
+
+  ngAfterViewInit() {
+    this.carRows.changes.subscribe(() => {
+      if (this.carRows.first.car.clientSurname === 'Kowalski') {
+        console.log('Warning, Client Kowalski is next queue, better go to holidays');
+      }
+    })
   }
 
   buildCarForm() {
