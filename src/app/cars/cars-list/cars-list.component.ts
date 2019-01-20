@@ -1,10 +1,11 @@
-import { Component, OnInit,AfterViewInit, ViewEncapsulation, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewEncapsulation, ViewChild, ViewChildren } from '@angular/core';
 import {Car} from "../models/car";
 import {TotalCostComponent} from "../total-cost/total-cost.component";
 import {CarsService} from "../cars.service";
 import {Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import { CostSharedService } from '../cost-shared.service';
+import { CarTableRowComponent } from '../car-table-row/car-table-row.component';
 
 @Component({
   selector: 'cs-cars-list',
@@ -14,6 +15,7 @@ import { CostSharedService } from '../cost-shared.service';
 })
 export class CarsListComponent implements OnInit {
   @ViewChild("totalCostRef") totalCostRef : TotalCostComponent;
+  //@ViewChildren(CarTableRowComponent)
   totalCost : number;
   grossCost : number;
   cars : Car[] = [];
@@ -64,8 +66,7 @@ export class CarsListComponent implements OnInit {
     this.router.navigate(['/cars', car.id]);
   }
 
-  removeCar(car : Car, event) {
-    event.stopPropagation();
+  onRemovedCar(car : Car) {
     this.carsService.removeCar(car.id).subscribe(() => {
       this.loadCars();
     });
