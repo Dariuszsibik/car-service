@@ -9,8 +9,7 @@ export class CarTableRowComponent implements OnInit {
   @Input() car : Car;
   @Output() removedCar = new EventEmitter();
 
-  ngOnInit(): void {
-    throw new Error("Method not implemented.");
+  ngOnInit() {
   }
 
   removeCar(car, event) {
