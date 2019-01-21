@@ -3,7 +3,7 @@ import {Car} from "../models/car";
 import {TotalCostComponent} from "../total-cost/total-cost.component";
 import {CarsService} from "../cars.service";
 import {Router} from "@angular/router";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators, FormArray} from "@angular/forms";
 import { CostSharedService } from '../cost-shared.service';
 import { CarTableRowComponent } from '../car-table-row/car-table-row.component';
 import { csValidators } from '../../shared-module/validators/cs-validators';
@@ -56,12 +56,24 @@ export class CarsListComponent implements OnInit {
       cost: '',
       isFullyDamaged: '',
       year: '',
-      parts: this.formBuilder.group({
-        name: '',
-        inStock: '',
-        price: ''
-      })
+      parts: this.formBuilder.array([])
     });
+  }
+
+  buildParts() : FormGroup {
+    return this.formBuilder.group({
+      name: '',
+      inStock: true,
+      price: ''
+    });
+  }
+
+  get parts() : FormArray {
+    return <FormArray>this.carForm.get('parts');
+  }
+
+  addPart() : void {
+    this.parts.push(this.buildParts());
   }
 
   togglePlateValidity() {
@@ -86,10 +98,7 @@ export class CarsListComponent implements OnInit {
   }
 
   addCar() {
-    const carFormData = Object.assign({}, this.carForm.value);
-    carFormData.parts = [carFormData.parts];
-
-    this.carsService.addCar(carFormData).subscribe(() => {
+    this.carsService.addCar(this.carForm.value).subscribe(() => {
       this.loadCars();
     });
   }
