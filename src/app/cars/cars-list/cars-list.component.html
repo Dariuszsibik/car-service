@@ -104,6 +104,7 @@
       <div class="col-sm-4">
         <label>Power</label>
         <input formControlName="power" type="text" class="form-control" placeholder="power">
+        <p *ngIf="!!carForm.get('power').errors?.power && carForm.get('power').dirty" class="error">Power value must be between 50 PS and 800 PS.</p>
       </div>
       <div class="col-sm-4">
         <label>Cost</label>

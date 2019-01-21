@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { SurnameShortcutPipe } from './pipes/surname-shortcut.pipe';
 import { ImportantDirective } from './directives/important.directive';
+import { Validators } from '@angular/forms';
+import { csValidators } from './validators/cs-validators';
 
 @NgModule({
   imports: [
