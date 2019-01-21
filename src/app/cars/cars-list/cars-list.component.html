@@ -91,7 +91,7 @@
       </div>
       <div class="col-sm-4">
         <label>Is car fully damaged
-          <input formControlName="isFullyDamaged" type="checkbox">
+          <input formControlName="isFullyDamaged" type="checkbox" (change)="togglePlateValidity()">
         </label>
       </div>
     </div>
