@@ -126,6 +126,21 @@
         <input formControlName="year" type="text" class="form-control" placeholder="year">
       </div>
     </div>
+    <div formGroupName="parts" class="row form-group part-group">
+      <div class="col-sm-4">
+        <label>Part name</label>
+        <input formControlName="name" type="text" class="form-control" placeholder="name">
+      </div>
+      <div class="col-sm-4">
+        <label>Is part in Stock:
+          <input formControlName="inStock" type="checkbox">
+        </label>
+      </div>
+      <div class="col-sm-4">
+        <label>Part price</label>
+        <input formControlName="price" type="text" class="form-control" placeholder="price">
+      </div>
+    </div>
 
     <div class="row">
       <div class="col-sm-12">
@@ -135,7 +150,7 @@
       </div>
     </div>
   </form>
-
+  <pre> {{ carForm.value | json }}</pre>
 </div>
 
 
