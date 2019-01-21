@@ -132,7 +132,7 @@
         <div class="row">
           <div class="col-12">
             <h5> {{ i + 1 }}) {{ part.value.name }} {{ part.value.price | currency:'PLN':true }}
-              <span class="btn btn-danger float-right"> ( X )</span>
+              <span class="btn btn-danger float-right" (click)="removePart(i)"> ( X )</span>
             </h5>
           </div>
         </div>
