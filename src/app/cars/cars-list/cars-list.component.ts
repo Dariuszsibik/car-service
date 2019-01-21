@@ -53,7 +53,6 @@ export class CarsListComponent implements OnInit {
       power: ['', csValidators.power],
       clientFirstName: '',
       clientSurname: '',
-      cost: '',
       isFullyDamaged: '',
       year: '',
       parts: this.formBuilder.array([])
@@ -102,9 +101,18 @@ export class CarsListComponent implements OnInit {
   }
 
   addCar() {
-    this.carsService.addCar(this.carForm.value).subscribe(() => {
+    let carFormData = Object.assign({}, this.carForm.value);
+    carFormData.cost = this.getPartsCost(carFormData.parts);
+
+    this.carsService.addCar(carFormData).subscribe(() => {
       this.loadCars();
     });
+  }
+
+  getPartsCost(parts) {
+    return parts.reduce((prev, next) => {
+      return parseFloat(prev) + parseFloat(next.price);
+    }, 0);
   }
 
   goToCarDetails(car : Car) {

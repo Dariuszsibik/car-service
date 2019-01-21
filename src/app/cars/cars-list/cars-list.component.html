@@ -107,9 +107,9 @@
         <p *ngIf="!!carForm.get('power').errors?.power && carForm.get('power').dirty" class="error">Power value must be between 50 PS and 800 PS.</p>
       </div>
       <div class="col-sm-4">
-        <label>Cost</label>
-        <input formControlName="cost" type="text" class="form-control" placeholder="cost">
-      </div>
+          <label>Year</label>
+          <input formControlName="year" type="text" class="form-control" placeholder="year">
+        </div>
     </div>
 
     <div class="row form-group">
@@ -120,10 +120,6 @@
       <div class="col-sm-4">
         <label>Client Last Name</label>
         <input formControlName="clientSurname" type="text" class="form-control" placeholder="Client Last Name">
-      </div>
-      <div class="col-sm-4">
-        <label>Year</label>
-        <input formControlName="year" type="text" class="form-control" placeholder="year">
       </div>
     </div>
 
