@@ -9,12 +9,10 @@ export class LayoutService {
 
   showSidebar(): void {
     this.sidebarSource$.next(true);
-    console.log(this.sidebarSource$)
   }
 
   hideSidebar(): void {
     this.sidebarSource$.next(false);
-    console.log(this.sidebarSource$)
   }
 
 }

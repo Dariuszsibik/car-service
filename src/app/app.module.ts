@@ -20,14 +20,11 @@ import { LoginRoutingModule } from './login/login-routing.module';
     BrowserModule,
     FormsModule,
     HttpModule,
-    CarsModule,
     LoginModule,
     CoreModule,
     AppRoutingModule,
-    CarsRoutingModule,
-    LoginRoutingModule
   ],
-  providers: [CarsService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 
