@@ -7,7 +7,7 @@ import {FormBuilder, FormGroup, Validators, FormArray} from "@angular/forms";
 import { CostSharedService } from '../cost-shared.service';
 import { CarTableRowComponent } from '../car-table-row/car-table-row.component';
 import { csValidators } from '../../shared-module/validators/cs-validators';
-import { CanDeactivateComponent } from 'src/app/guards/form-can-deactivate.guard';
+import { CanDeactivateComponent } from '../../guards/form-can-deactivate.guard';
 
 
 @Component({

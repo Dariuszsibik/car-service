@@ -11,6 +11,7 @@ import {RouterModule} from "@angular/router";
 import {AppRoutingModule} from "./app-routing.module";
 import { LoginModule } from './login/login.module';
 import { LoginRoutingModule } from './login/login-routing.module';
+import { SharedModule } from './shared-module/shared.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { LoginRoutingModule } from './login/login-routing.module';
     LoginModule,
     CoreModule,
     AppRoutingModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
