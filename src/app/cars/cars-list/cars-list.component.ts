@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewEncapsulation, ViewChild, ViewChildren, QueryList, ElementRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewEncapsulation, ViewChild, ViewChildren, QueryList, ElementRef, Renderer2 } from '@angular/core';
 import {Car} from "../models/car";
 import {TotalCostComponent} from "../total-cost/total-cost.component";
 import {CarsService} from "../cars.service";
@@ -29,6 +29,7 @@ export class CarsListComponent implements OnInit, CanDeactivateComponent {
   constructor(private carsService : CarsService,
               private formBuilder : FormBuilder,
               private costSharedService : CostSharedService,
+              private renderer : Renderer2,
               private router : Router) {}
 
   ngOnInit() {
@@ -41,9 +42,9 @@ export class CarsListComponent implements OnInit, CanDeactivateComponent {
     console.log(addCarTitle);
     this.carForm.valueChanges.subscribe(() => {
       if (this.carForm.invalid) {
-        addCarTitle.style.color = 'red';
+        this.renderer.setStyle(addCarTitle, 'color', 'red');
       } else {
-        addCarTitle.style.color = 'green';
+        this.renderer.setStyle(addCarTitle, 'color', 'green');
       }
     })
 
