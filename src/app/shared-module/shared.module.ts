@@ -6,13 +6,14 @@ import { ImportantDirective } from './directives/important.directive';
 import { Validators } from '@angular/forms';
 import { csValidators } from './validators/cs-validators';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ScrollTopDirective } from './directives/scroll-top.directive';
 
 @NgModule({
   imports: [
     CommonModule
   ],
-  exports: [HeaderComponent, SurnameShortcutPipe, ImportantDirective, PageNotFoundComponent],
-  declarations: [HeaderComponent, SurnameShortcutPipe, ImportantDirective, PageNotFoundComponent]
+  exports: [HeaderComponent, SurnameShortcutPipe, ImportantDirective, PageNotFoundComponent, ScrollTopDirective],
+  declarations: [HeaderComponent, SurnameShortcutPipe, ImportantDirective, PageNotFoundComponent, ScrollTopDirective]
 })
 export class SharedModule {
 }
