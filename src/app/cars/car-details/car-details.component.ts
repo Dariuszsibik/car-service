@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {CarsService} from "../cars.service";
 import {Car} from "../models/car";
@@ -10,6 +10,7 @@ import {FormBuilder, FormGroup, Validators, FormArray} from "@angular/forms";
   styleUrls: ['./car-details.component.less']
 })
 export class CarDetailsComponent implements OnInit {
+  @ViewChild('dateinfocontainer', {read: ViewContainerRef}) dateInfocontainer : ViewContainerRef;
   car : Car;
   carForm : FormGroup;
 
