@@ -11,6 +11,7 @@ import { IncomeTaxComponent } from './total-cost/income-tax/income-tax.component
 import { CarTableRowComponent } from './car-table-row/car-table-row.component';
 import { CarsComponent } from './cars.component';
 import { CarsRoutingModule } from './cars-routing.module';
+import { DateInfoComponent } from './car-details/date-info/date-info.component';
 
 @NgModule({
   imports: [
@@ -26,6 +27,6 @@ import { CarsRoutingModule } from './cars-routing.module';
   providers: [
     CarResolve
   ],
-  declarations: [CarsListComponent, TotalCostComponent, CarDetailsComponent, IncomeTaxComponent, CarTableRowComponent, CarsComponent]
+  declarations: [CarsListComponent, TotalCostComponent, CarDetailsComponent, IncomeTaxComponent, CarTableRowComponent, CarsComponent, DateInfoComponent]
 })
 export class CarsModule {}
