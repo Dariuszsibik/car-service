@@ -14,6 +14,7 @@ export class CarDetailsComponent implements OnInit {
   @ViewChild('dateInfoContainer', {read: ViewContainerRef}) dateInfoContainer : ViewContainerRef;
   car : Car;
   carForm : FormGroup;
+  elapsedDays : number;
 
   constructor(private carsService : CarsService,
               private formBuilder : FormBuilder,
@@ -38,6 +39,9 @@ export class CarDetailsComponent implements OnInit {
         .createComponent(dateInfoFactory);
 
     dateInfoRef.instance.car = this.car;
+    dateInfoRef.instance.checkElapsedDays.subscribe((value) => {
+        this.elapsedDays = value;
+    });
   }
 
   buildCarForm() {

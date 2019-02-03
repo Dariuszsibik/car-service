@@ -2,7 +2,7 @@
   <p levels>cars / {{ car.model }}</p>
 
   <div content>
-    <p>Car details</p>
+    <p>Car details | <span *ngIf="elapsedDays"> {{ elapsedDays }} days in Service </span></p>
   </div>
 </cs-header>
 
