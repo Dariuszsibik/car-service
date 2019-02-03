@@ -15,6 +15,7 @@ export class CarDetailsComponent implements OnInit {
   car : Car;
   carForm : FormGroup;
   elapsedDays : number;
+  dateInfoRef;
 
   constructor(private carsService : CarsService,
               private formBuilder : FormBuilder,
@@ -35,13 +36,17 @@ export class CarDetailsComponent implements OnInit {
     const dateInfoFactory = this.componentFactoryResolver
       .resolveComponentFactory(<Type<DateInfoComponent>>DateInfoComponent);
 
-    const dateInfoRef = <ComponentRef<DateInfoComponent>>this.dateInfoContainer
+    this.dateInfoRef = <ComponentRef<DateInfoComponent>>this.dateInfoContainer
         .createComponent(dateInfoFactory);
 
-    dateInfoRef.instance.car = this.car;
-    dateInfoRef.instance.checkElapsedDays.subscribe((value) => {
+    this.dateInfoRef.instance.car = this.car;
+    this.dateInfoRef.instance.checkElapsedDays.subscribe((value) => {
         this.elapsedDays = value;
     });
+  }
+
+  clearDateInfoContainer() {
+    this.dateInfoRef.destroy();
   }
 
   buildCarForm() {
