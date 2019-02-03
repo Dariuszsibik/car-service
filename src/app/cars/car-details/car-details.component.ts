@@ -34,7 +34,10 @@ export class CarDetailsComponent implements OnInit {
     const dateInfoFactory = this.componentFactoryResolver
       .resolveComponentFactory(<Type<DateInfoComponent>>DateInfoComponent);
 
-      this.dateInfoContainer.createComponent(dateInfoFactory);
+    const dateInfoRef = <ComponentRef<DateInfoComponent>>this.dateInfoContainer
+        .createComponent(dateInfoFactory);
+
+    dateInfoRef.instance.car = this.car;
   }
 
   buildCarForm() {
