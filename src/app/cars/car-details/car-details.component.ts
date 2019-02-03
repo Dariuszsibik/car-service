@@ -1,8 +1,9 @@
-import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, Type, ComponentFactoryResolver, OnInit, ViewContainerRef, ViewChild, ComponentRef } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {CarsService} from "../cars.service";
 import {Car} from "../models/car";
 import {FormBuilder, FormGroup, Validators, FormArray} from "@angular/forms";
+import {DateInfoComponent} from "./date-info/date-info.component";
 
 @Component({
   selector: 'cs-car-details',
@@ -10,13 +11,14 @@ import {FormBuilder, FormGroup, Validators, FormArray} from "@angular/forms";
   styleUrls: ['./car-details.component.less']
 })
 export class CarDetailsComponent implements OnInit {
-  @ViewChild('dateinfocontainer', {read: ViewContainerRef}) dateInfocontainer : ViewContainerRef;
+  @ViewChild('dateInfoContainer', {read: ViewContainerRef}) dateInfoContainer : ViewContainerRef;
   car : Car;
   carForm : FormGroup;
 
   constructor(private carsService : CarsService,
               private formBuilder : FormBuilder,
               private router : Router,
+              private componentFactoryResolver : ComponentFactoryResolver,
               private route : ActivatedRoute) { }
 
   ngOnInit() {
@@ -24,10 +26,19 @@ export class CarDetailsComponent implements OnInit {
     this.carForm = this.buildCarForm();
   }
 
+  createDateInfo() {
+    if (this.dateInfoContainer.get(0) !== null) {
+      return;
+    }
+
+    const dateInfoFactory = this.componentFactoryResolver
+      .resolveComponentFactory(<Type<DateInfoComponent>>DateInfoComponent);
+
+      this.dateInfoContainer.createComponent(dateInfoFactory);
+  }
+
   buildCarForm() {
-    let parts = this.car.parts.map((part) => {
-      return this.formBuilder.group(part);
-    })
+    let parts = this.car.parts.map((part) => this.formBuilder.group(part));
 
     return this.formBuilder.group({
       model: [this.car.model, Validators.required],
@@ -84,3 +95,4 @@ export class CarDetailsComponent implements OnInit {
     }, 0);
   }
 }
+

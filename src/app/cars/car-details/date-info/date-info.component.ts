@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { emit } from 'cluster';
 import { Car } from '../../models/car';
 
 @Component({
@@ -13,6 +12,6 @@ export class DateInfoComponent {
 
   getElapsedDays() {
     const elapsedMilliseconds = +new Date() - +new Date(this.car.deliveryDate);
-    this.checkElapsedDays.emit(elapsedMilliseconds / (1000 * 60 * 60 * 24));
+    this.checkElapsedDays.emit(Math.round(elapsedMilliseconds / (1000 * 60 * 60 * 24)));
   }
 }

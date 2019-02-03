@@ -27,6 +27,14 @@ import { DateInfoComponent } from './car-details/date-info/date-info.component';
   providers: [
     CarResolve
   ],
-  declarations: [CarsListComponent, TotalCostComponent, CarDetailsComponent, IncomeTaxComponent, CarTableRowComponent, CarsComponent, DateInfoComponent]
+  entryComponents: [DateInfoComponent],
+  declarations: [
+    CarsListComponent,
+    TotalCostComponent,
+    CarDetailsComponent,
+    IncomeTaxComponent,
+    CarTableRowComponent,
+    CarsComponent,
+    DateInfoComponent]
 })
 export class CarsModule {}
